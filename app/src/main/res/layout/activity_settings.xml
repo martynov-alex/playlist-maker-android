@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +19,8 @@
             android:backgroundTint="@color/white"
             android:src="@drawable/arrow_back_icon"
             app:iconTint="@color/black_russian"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter"
+            tools:ignore="ContentDescription" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,55 +34,57 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="61dp">
+        android:layout_height="@dimen/settings_scr_item_height">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/dark_theme_switch"
             android:textColor="@color/black_russian"
-            android:textSize="16sp"
-            android:layout_marginStart="16dp"/>
-        <Switch
+            android:textSize="@dimen/settings_scr_item_text_size"
+            android:layout_marginStart="@dimen/settings_scr_item_title_margin_start"/>
+        <androidx.appcompat.widget.SwitchCompat
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:layout_marginEnd="18dp"/>
+            android:layout_marginEnd="@dimen/settings_scr_item_icon_margin_end"/>
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="61dp">
+        android:layout_height="@dimen/settings_scr_item_height">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/share_button"
             android:textColor="@color/black_russian"
-            android:textSize="16sp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="@dimen/settings_scr_item_text_size"
+            android:layout_marginStart="@dimen/settings_scr_item_title_margin_start"/>
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/settings_scr_item_icon_margin_end"
             android:backgroundTint="@color/white"
+            android:scaleType="fitCenter"
             android:src="@drawable/share_icon"
             app:iconTint="@color/black_russian"
-            android:scaleType="fitCenter"
-            android:layout_marginEnd="18dp"/>
+            tools:ignore="ContentDescription" />
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="61dp">
+        android:layout_height="@dimen/settings_scr_item_height">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/support_button"
             android:textColor="@color/black_russian"
-            android:textSize="16sp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="@dimen/settings_scr_item_text_size"
+            android:layout_marginStart="@dimen/settings_scr_item_title_margin_start"/>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -89,20 +93,21 @@
             android:src="@drawable/support_icon"
             app:iconTint="@color/black_russian"
             android:scaleType="fitCenter"
-            android:layout_marginEnd="18dp"/>
+            android:layout_marginEnd="@dimen/settings_scr_item_icon_margin_end"
+            tools:ignore="ContentDescription" />
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="61dp">
+        android:layout_height="@dimen/settings_scr_item_height">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/agreement_button"
             android:textColor="@color/black_russian"
-            android:textSize="16sp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="@dimen/settings_scr_item_text_size"
+            android:layout_marginStart="@dimen/settings_scr_item_title_margin_start"/>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -111,7 +116,8 @@
             android:src="@drawable/arrow_forward_icon"
             app:iconTint="@color/black_russian"
             android:scaleType="fitCenter"
-            android:layout_marginEnd="18dp"/>
+            android:layout_marginEnd="@dimen/settings_scr_item_icon_margin_end"
+            tools:ignore="ContentDescription" />
     </FrameLayout>
 
 </LinearLayout>

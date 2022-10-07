@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main Screen -->
+    <dimen name="main_scr_button_corner_radius">16dp</dimen>
+    <dimen name="main_scr_button_icon_padding">8dp</dimen>
+    <dimen name="main_scr_button_margin_bottom">16dp</dimen>
+
+    <dimen name="main_scr_button_text_size">22sp</dimen>
+
+    <!-- Settings Screen -->
+    <dimen name="settings_scr_item_height">61dp</dimen>
+    <dimen name="settings_scr_item_title_margin_start">16dp</dimen>
+    <dimen name="settings_scr_item_icon_margin_end">18dp</dimen>
+
+    <dimen name="settings_scr_item_text_size">16sp</dimen>
+
+</resources>

@@ -33,14 +33,14 @@
             android:backgroundTint="@color/white"
             android:text="@string/search_button"
             android:textColor="@color/black_russian"
-            android:textSize="22sp"
+            android:textSize="@dimen/main_scr_button_text_size"
             android:textAllCaps="false"
-            app:cornerRadius="16dp"
+            app:cornerRadius="@dimen/main_scr_button_corner_radius"
             app:icon="@drawable/search_icon"
             app:iconGravity="textStart"
-            app:iconPadding="8dp"
+            app:iconPadding="@dimen/main_scr_button_icon_padding"
             app:iconTint="@color/black_russian"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="@dimen/main_scr_button_margin_bottom" />
 
         <Button
             android:id="@+id/library_button"
@@ -50,14 +50,14 @@
             android:backgroundTint="@color/white"
             android:text="@string/library_button"
             android:textColor="@color/black_russian"
-            android:textSize="22sp"
+            android:textSize="@dimen/main_scr_button_text_size"
             android:textAllCaps="false"
-            app:cornerRadius="16dp"
+            app:cornerRadius="@dimen/main_scr_button_corner_radius"
             app:icon="@drawable/library_icon"
             app:iconGravity="textStart"
-            app:iconPadding="8dp"
+            app:iconPadding="@dimen/main_scr_button_icon_padding"
             app:iconTint="@color/black_russian"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="@dimen/main_scr_button_margin_bottom" />
 
         <Button
             android:id="@+id/settings_button"
@@ -67,12 +67,12 @@
             android:backgroundTint="@color/white"
             android:text="@string/settings_button"
             android:textColor="@color/black_russian"
-            android:textSize="22sp"
+            android:textSize="@dimen/main_scr_button_text_size"
             android:textAllCaps="false"
-            app:cornerRadius="16dp"
+            app:cornerRadius="@dimen/main_scr_button_corner_radius"
             app:icon="@drawable/settings_icon"
             app:iconGravity="textStart"
-            app:iconPadding="8dp"
+            app:iconPadding="@dimen/main_scr_button_icon_padding"
             app:iconTint="@color/black_russian" />
 
     </LinearLayout>
