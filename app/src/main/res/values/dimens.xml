@@ -10,6 +10,7 @@
     <!-- Settings Screen -->
     <dimen name="settings_scr_item_height">61dp</dimen>
     <dimen name="settings_scr_item_title_margin_start">16dp</dimen>
+    <dimen name="settings_scr_button_icon_width">54dp</dimen>
     <dimen name="settings_scr_item_icon_margin_end">18dp</dimen>
 
     <dimen name="settings_scr_item_text_size">16sp</dimen>
