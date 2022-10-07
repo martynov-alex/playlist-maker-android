@@ -9,7 +9,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar?.hide()
 
         val searchButton = findViewById<Button>(R.id.search_button)
         val libraryButton = findViewById<Button>(R.id.library_button)
