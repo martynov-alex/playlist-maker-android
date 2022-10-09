@@ -5,6 +5,7 @@
     <dimen name="main_scr_button_icon_padding">8dp</dimen>
     <dimen name="main_scr_button_margin_bottom">16dp</dimen>
 
+    <dimen name="main_scr_app_name_text_size">22sp</dimen>
     <dimen name="main_scr_button_text_size">22sp</dimen>
 
     <!-- Settings Screen -->
