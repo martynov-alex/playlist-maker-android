@@ -45,6 +45,7 @@
             style="@style/SettingsScreen_ItemTextStyle"
             android:text="@string/share_button"/>
         <ImageButton
+            android:id="@+id/share_button"
             style="@style/SettingsScreen_ItemButtonStyle"
             android:src="@drawable/share_icon"
             tools:ignore="ContentDescription" />
@@ -57,6 +58,7 @@
             style="@style/SettingsScreen_ItemTextStyle"
             android:text="@string/support_button"/>
         <ImageButton
+            android:id="@+id/support_button"
             style="@style/SettingsScreen_ItemButtonStyle"
             android:src="@drawable/support_icon"
             tools:ignore="ContentDescription" />
@@ -69,6 +71,7 @@
             style="@style/SettingsScreen_ItemTextStyle"
             android:text="@string/agreement_button"/>
         <ImageButton
+            android:id="@+id/agreement_button"
             style="@style/SettingsScreen_ItemButtonStyle"
             android:src="@drawable/arrow_forward_icon"
             tools:ignore="ContentDescription" />
