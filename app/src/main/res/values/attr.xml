@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common. -->
+    <attr name="common_status_bar_color" format="reference"/>
+    <attr name="common_back_button_color" format="reference"/>
+    <attr name="common_background_color" format="reference"/>
+
+    <!-- Main screen. -->
+    <attr name="main_background_color" format="reference"/>
+
+    <!-- Settings screen. -->
+    <attr name="settings_icons_color" format="reference"/>
+    <attr name="settings_text_color" format="reference"/>
+
+    <!-- Search screen. -->
+    <attr name="search_form_background_color" format="reference"/>
+    <attr name="search_form_icons_color" format="reference"/>
+    <attr name="search_form_hint_color" format="reference"/>
+
+</resources>
