@@ -3,7 +3,7 @@ package com.practicum.playlistmaker
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
 class SettingsActivity : AppCompatActivity() {
@@ -11,9 +11,9 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        val shareButton = findViewById<ImageButton>(R.id.share_button)
-        val supportButton = findViewById<ImageButton>(R.id.support_button)
-        val agreementButton = findViewById<ImageButton>(R.id.agreement_button)
+        val shareButton = findViewById<ImageView>(R.id.share_button)
+        val supportButton = findViewById<ImageView>(R.id.support_button)
+        val agreementButton = findViewById<ImageView>(R.id.agreement_button)
 
         shareButton.setOnClickListener {
             val share = Intent.createChooser(Intent().apply {

@@ -1,16 +1,37 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.PlaylistMaker" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.PlaylistMaker" parent="Theme.MaterialComponents.NoActionBar">
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
+
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/yp_blue</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/white</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="colorOnSecondary">@color/yp_white</item>
+
+        <!-- Status bar. -->
+        <item name="android:statusBarColor">@color/yp_black</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Common. -->
+        <item name="common_status_bar_color">@color/yp_black</item>
+        <item name="common_back_button_color">@color/yp_white</item>
+
+        <!-- Main screen. -->
+        <item name="main_background_color">@color/yp_black</item>
+
+        <!-- Settings screen. -->
+        <item name="common_background_color">@color/yp_black</item>
+        <item name="settings_icons_color">@color/yp_white</item>
+        <item name="settings_text_color">@color/yp_white</item>
+
+        <!-- Search screen. -->
+        <item name="search_form_background_color">@color/yp_white</item>
+        <item name="search_form_icons_color">@color/yp_black</item>
+        <item name="search_form_hint_color">@color/yp_black</item>
+
     </style>
 </resources>
