@@ -13,35 +13,35 @@ class SettingsActivity : AppCompatActivity() {
 
         val shareButton = findViewById<ImageView>(R.id.share_button)
         val supportButton = findViewById<ImageView>(R.id.support_button)
-        val offerButton = findViewById<ImageView>(R.id.offer_button)
+        val agreementButton = findViewById<ImageView>(R.id.agreement_button)
 
         shareButton.setOnClickListener {
             val share = Intent.createChooser(Intent().apply {
                 action = Intent.ACTION_SEND
                 type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, getString(R.string.settings_share_url))
-                putExtra(Intent.EXTRA_TITLE, getString(R.string.settings_share_title))
-            }, getString(R.string.settings_share_intent_title))
+                putExtra(Intent.EXTRA_TEXT, "https://practicum.yandex.ru/android-developer/")
+                putExtra(Intent.EXTRA_TITLE, "Лучший курс по Android разработке!")
+            }, "Share link")
             startActivity(share)
         }
 
         supportButton.setOnClickListener {
             val share = Intent.createChooser(Intent().apply {
                 action = Intent.ACTION_SENDTO
-                data = Uri.parse(getString(R.string.settings_support_uri))
-                putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.settings_support_email)))
-                putExtra(Intent.EXTRA_SUBJECT, getString(R.string.settings_support_subject))
-                putExtra(Intent.EXTRA_TEXT, getString(R.string.settings_support_text))
+                data = Uri.parse("mailto:")
+                putExtra(Intent.EXTRA_EMAIL, arrayOf("a.a.martynov@yandex.ru"))
+                putExtra(Intent.EXTRA_SUBJECT, "Сообщение разработчикам и разработчицам приложения Playlist Maker")
+                putExtra(Intent.EXTRA_TEXT, "Спасибо разработчикам и разработчицам за крутое приложение!")
 
-            }, getString(R.string.settings_support_intent_title))
+            }, "Send message")
             startActivity(share)
         }
 
-        offerButton.setOnClickListener {
+        agreementButton.setOnClickListener {
             val share = Intent.createChooser(Intent().apply {
                 action = Intent.ACTION_VIEW
-                data = Uri.parse(getString(R.string.settings_offer_uri))
-            }, getString(R.string.settings_offer_intent_title))
+                data = Uri.parse("https://yandex.ru/legal/practicum_offer/")
+            }, "Open agreement")
             startActivity(share)
         }
 

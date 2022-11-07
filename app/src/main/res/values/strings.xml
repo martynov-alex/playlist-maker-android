@@ -9,22 +9,9 @@
     <!-- Settings Screen -->
     <string name="settings_screen_title">Настройки</string>
     <string name="settings_dark_theme_switch">Темная тема</string>
-
     <string name="settings_share_button">Поделиться приложением</string>
-    <string name="settings_share_title">Лучший курс по Android разработке!</string>
-    <string name="settings_share_url">https://practicum.yandex.ru/android-developer/</string>
-    <string name="settings_share_intent_title">Share link</string>
-
     <string name="settings_support_button">Написать в поддержку</string>
-    <string name="settings_support_uri">mailto:</string>
-    <string name="settings_support_email">a.a.martynov@yandex.ru</string>
-    <string name="settings_support_subject">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
-    <string name="settings_support_text">Спасибо разработчикам и разработчицам за крутое приложение!</string>
-    <string name="settings_support_intent_title">Send message to support</string>
-
-    <string name="settings_offer_button">Пользовательское соглашение</string>
-    <string name="settings_offer_uri">https://yandex.ru/legal/practicum_offer/</string>
-    <string name="settings_offer_intent_title">Open offer</string>
+    <string name="settings_agreement_button">Пользовательское соглашение</string>
 
     <!-- Search Screen -->
     <string name="search_screen_title">Поиск</string>
