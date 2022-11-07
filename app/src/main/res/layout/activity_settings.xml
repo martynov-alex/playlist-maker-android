@@ -61,9 +61,9 @@
         android:layout_height="@dimen/settings_scr_item_height">
         <TextView
             style="@style/SettingsScreen_ItemTextStyle"
-            android:text="@string/settings_agreement_button"/>
+            android:text="@string/settings_offer_button"/>
         <ImageView
-            android:id="@+id/agreement_button"
+            android:id="@+id/offer_button"
             style="@style/SettingsScreen_ItemButtonStyle"
             android:src="@drawable/settings_arrow_forward_icon"
             tools:ignore="ContentDescription" />
