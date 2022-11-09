@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/common_background_color"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,64 +12,34 @@
         android:layout_height="56dp"
         android:padding="4dp"
         android:layout_marginBottom="24dp">
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/arrow_back_icon"
-            app:iconTint="@color/black_russian"
-            android:scaleType="fitCenter"
+        <ImageView
+            style="@style/Common_PanelHeader_BackButton"
             tools:ignore="ContentDescription" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/settings_screen"
-            android:textColor="@color/black_russian"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_marginStart="12dp"/>
+            style="@style/Common_PanelHeader_Text"
+            android:text="@string/settings_screen_title"/>
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/settings_scr_item_height">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/dark_theme_switch"
-            android:textColor="@color/black_russian"
-            android:textSize="@dimen/settings_scr_item_text_size"
-            android:layout_marginStart="@dimen/settings_scr_item_title_margin_start"/>
+            style="@style/SettingsScreen_ItemTextStyle"
+            android:text="@string/settings_dark_theme_switch" />
         <androidx.appcompat.widget.SwitchCompat
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:layout_marginEnd="@dimen/settings_scr_item_icon_margin_end"/>
+            style="@style/SettingsScreen_ItemButtonStyle" />
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/settings_scr_item_height">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/share_button"
-            android:textColor="@color/black_russian"
-            android:textSize="@dimen/settings_scr_item_text_size"
-            android:layout_marginStart="@dimen/settings_scr_item_title_margin_start"/>
-
-        <ImageButton
-            android:layout_width="@dimen/settings_scr_button_icon_width"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:layout_marginEnd="@dimen/settings_scr_item_icon_margin_end"
-            android:backgroundTint="@color/white"
-            android:scaleType="fitCenter"
-            android:src="@drawable/share_icon"
-            app:iconTint="@color/black_russian"
+            style="@style/SettingsScreen_ItemTextStyle"
+            android:text="@string/settings_share_button"/>
+        <ImageView
+            android:id="@+id/share_button"
+            style="@style/SettingsScreen_ItemButtonStyle"
+            android:src="@drawable/settings_share_icon"
             tools:ignore="ContentDescription" />
     </FrameLayout>
 
@@ -78,22 +47,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/settings_scr_item_height">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/support_button"
-            android:textColor="@color/black_russian"
-            android:textSize="@dimen/settings_scr_item_text_size"
-            android:layout_marginStart="@dimen/settings_scr_item_title_margin_start"/>
-        <ImageButton
-            android:layout_width="@dimen/settings_scr_button_icon_width"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/support_icon"
-            app:iconTint="@color/black_russian"
-            android:scaleType="fitCenter"
-            android:layout_marginEnd="@dimen/settings_scr_item_icon_margin_end"
+            style="@style/SettingsScreen_ItemTextStyle"
+            android:text="@string/settings_support_button"/>
+        <ImageView
+            android:id="@+id/support_button"
+            style="@style/SettingsScreen_ItemButtonStyle"
+            android:src="@drawable/settings_support_icon"
             tools:ignore="ContentDescription" />
     </FrameLayout>
 
@@ -101,22 +60,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/settings_scr_item_height">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/agreement_button"
-            android:textColor="@color/black_russian"
-            android:textSize="@dimen/settings_scr_item_text_size"
-            android:layout_marginStart="@dimen/settings_scr_item_title_margin_start"/>
-        <ImageButton
-            android:layout_width="@dimen/settings_scr_button_icon_width"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/arrow_forward_icon"
-            app:iconTint="@color/black_russian"
-            android:scaleType="fitCenter"
-            android:layout_marginEnd="@dimen/settings_scr_item_icon_margin_end"
+            style="@style/SettingsScreen_ItemTextStyle"
+            android:text="@string/settings_offer_button"/>
+        <ImageView
+            android:id="@+id/offer_button"
+            style="@style/SettingsScreen_ItemButtonStyle"
+            android:src="@drawable/settings_arrow_forward_icon"
             tools:ignore="ContentDescription" />
     </FrameLayout>
 
