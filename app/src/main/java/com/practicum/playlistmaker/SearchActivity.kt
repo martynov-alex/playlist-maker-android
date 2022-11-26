@@ -10,6 +10,8 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class SearchActivity : AppCompatActivity() {
     private var searchRequest: String = ""
@@ -45,13 +47,18 @@ class SearchActivity : AppCompatActivity() {
         }
 
         inputEditText.addTextChangedListener(searchFormTextWatcher)
+
+        // Search results RecyclerView init
+        val recycler = findViewById<RecyclerView>(R.id.search_result_rv)
+        recycler.layoutManager = LinearLayoutManager(this)
+        recycler.adapter = SearchResultAdapter(MockTracks.list)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
         val inputEditText = findViewById<EditText>(R.id.inputEditText)
-        searchRequest = savedInstanceState.getString(SEARCH_REQUEST,"")
+        searchRequest = savedInstanceState.getString(SEARCH_REQUEST, "")
         Log.d("Search activity", "Restore $searchRequest")
 
         inputEditText.setText(searchRequest)
@@ -64,15 +71,18 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun clearButtonVisibility(s: CharSequence?): Int {
-            return if (s.isNullOrEmpty()) {
-                  View.GONE
-                } else {
-                  View.VISIBLE
-                }
-          }
+        return if (s.isNullOrEmpty()) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
+    }
 
     private fun View.hideKeyboard() {
-        val imm = ContextCompat.getSystemService(context, InputMethodManager::class.java) as InputMethodManager
+        val imm = ContextCompat.getSystemService(
+            context,
+            InputMethodManager::class.java
+        ) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
     }
 }
