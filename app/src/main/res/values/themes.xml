@@ -29,9 +29,14 @@
         <item name="settings_text_color">@color/yp_black</item>
 
         <!-- Search screen. -->
+        <!-- Search screen - Search field. -->
         <item name="search_form_background_color">@color/yp_light_gray</item>
         <item name="search_form_icons_color">@color/yp_text_gray</item>
         <item name="search_form_hint_color">@color/yp_text_gray</item>
+        <!-- Search screen - Search result item. -->
+        <item name="search_result_item_primary_text_color">@color/yp_black</item>
+        <item name="search_result_item_secondary_text_color">@color/yp_text_gray</item>
+        <item name="search_result_item_icons_color">@color/yp_text_gray</item>
 
     </style>
 </resources>

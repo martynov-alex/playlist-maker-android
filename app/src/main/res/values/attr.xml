@@ -14,8 +14,13 @@
     <attr name="settings_text_color" format="reference"/>
 
     <!-- Search screen. -->
+    <!-- Search screen - Search field. -->
     <attr name="search_form_background_color" format="reference"/>
     <attr name="search_form_icons_color" format="reference"/>
     <attr name="search_form_hint_color" format="reference"/>
+    <!-- Search screen - Search field. -->
+    <attr name="search_result_item_primary_text_color" format="reference"/>
+    <attr name="search_result_item_secondary_text_color" format="reference"/>
+    <attr name="search_result_item_icons_color" format="reference"/>
 
 </resources>
