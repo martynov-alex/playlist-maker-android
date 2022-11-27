@@ -27,7 +27,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginBottom">@dimen/main_scr_button_margin_bottom</item>
+        <item name="android:layout_marginBottom">@dimen/main_button_margin_bottom</item>
 
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
@@ -36,12 +36,12 @@
 
         <item name="android:fontFamily">@font/ys_display_medium</item>
         <item name="android:textColor">@color/yp_black</item>
-        <item name="android:textSize">@dimen/main_scr_button_text_size</item>
+        <item name="android:textSize">@dimen/main_button_text_size</item>
         <item name="android:textAllCaps">false</item>
 
-        <item name="cornerRadius">@dimen/main_scr_button_corner_radius</item>
+        <item name="cornerRadius">@dimen/main_button_corner_radius</item>
         <item name="iconGravity">textStart</item>
-        <item name="iconPadding">@dimen/main_scr_button_icon_padding</item>
+        <item name="iconPadding">@dimen/main_button_icon_padding</item>
         <item name="iconTint">@color/yp_black</item>
     </style>
 
@@ -50,18 +50,18 @@
     <style name="SettingsScreen_ItemTextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/settings_scr_item_title_margin_start</item>
+        <item name="android:layout_marginStart">@dimen/settings_item_title_margin_start</item>
         <item name="android:layout_gravity">center_vertical</item>
 
         <item name="android:fontFamily">@font/ys_display_regular</item>
         <item name="android:textColor">?attr/settings_text_color</item>
-        <item name="android:textSize">@dimen/settings_scr_item_text_size</item>
+        <item name="android:textSize">@dimen/settings_item_text_size</item>
     </style>
 
     <style name="SettingsScreen_ItemButtonStyle">
-        <item name="android:layout_width">@dimen/settings_scr_button_icon_width</item>
+        <item name="android:layout_width">@dimen/settings_button_icon_width</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_marginEnd">@dimen/settings_scr_item_icon_margin_end</item>
+        <item name="android:layout_marginEnd">@dimen/settings_item_icon_margin_end</item>
         <item name="android:paddingTop">18dp</item>
         <item name="android:paddingBottom">18dp</item>
         <item name="android:layout_gravity">end</item>
