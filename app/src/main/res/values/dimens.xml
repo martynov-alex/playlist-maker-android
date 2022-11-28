@@ -3,21 +3,36 @@
 
     <!-- Common. -->
     <dimen name="common_panel_header_margin_start">12dp</dimen>
-    <dimen name="common_panel_header_text_size">22sp</dimen>
     <dimen name="common_panel_header_icon_padding">12dp</dimen>
 
+    <dimen name="common_panel_header_text_size">22sp</dimen>
+
     <!-- Main screen. -->
-    <dimen name="main_scr_button_corner_radius">16dp</dimen>
-    <dimen name="main_scr_button_icon_padding">8dp</dimen>
-    <dimen name="main_scr_button_margin_bottom">16dp</dimen>
-    <dimen name="main_scr_app_name_text_size">22sp</dimen>
-    <dimen name="main_scr_button_text_size">22sp</dimen>
+    <dimen name="main_button_corner_radius">16dp</dimen>
+    <dimen name="main_button_icon_padding">8dp</dimen>
+    <dimen name="main_button_margin_bottom">16dp</dimen>
+
+    <dimen name="main_app_name_text_size">22sp</dimen>
+    <dimen name="main_button_text_size">22sp</dimen>
 
     <!-- Settings screen. -->
-    <dimen name="settings_scr_item_height">60dp</dimen>
-    <dimen name="settings_scr_item_title_margin_start">16dp</dimen>
-    <dimen name="settings_scr_button_icon_width">54dp</dimen>
-    <dimen name="settings_scr_item_icon_margin_end">18dp</dimen>
-    <dimen name="settings_scr_item_text_size">16sp</dimen>
+    <dimen name="settings_item_height">60dp</dimen>
+    <dimen name="settings_item_title_margin_start">16dp</dimen>
+    <dimen name="settings_button_icon_width">54dp</dimen>
+    <dimen name="settings_item_icon_margin_end">18dp</dimen>
+
+    <dimen name="settings_item_text_size">16sp</dimen>
+
+    <!-- Search screen. -->
+    <dimen name="search_result_item_height">60dp</dimen>
+    <dimen name="search_result_item_margin_start">5dp</dimen>
+    <dimen name="search_result_item_margin_artwork">8dp</dimen>
+    <dimen name="search_result_item_artwork_size">44dp</dimen>
+    <dimen name="search_result_item_details_button_margin_start">8dp</dimen>
+    <dimen name="search_result_item_details_button_margin_top">18dp</dimen>
+    <dimen name="search_result_item_details_button_margin_end">12dp</dimen>
+
+    <dimen name="search_result_item_primary_text_size">16sp</dimen>
+    <dimen name="search_result_item_secondary_text_size">11sp</dimen>
 
 </resources>

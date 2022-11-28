@@ -67,4 +67,11 @@
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_result_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp"
+        tools:listitem="@layout/search_result_item"/>
+
 </LinearLayout>
