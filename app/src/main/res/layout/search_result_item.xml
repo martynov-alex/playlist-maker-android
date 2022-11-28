@@ -6,11 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/search_result_item_height"
     android:layout_marginStart="@dimen/search_result_item_margin_start"
-    android:orientation="horizontal"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/item_artwork"
