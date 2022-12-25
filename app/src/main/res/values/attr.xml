@@ -22,5 +22,10 @@
     <attr name="search_result_item_primary_text_color" format="reference"/>
     <attr name="search_result_item_secondary_text_color" format="reference"/>
     <attr name="search_result_item_icons_color" format="reference"/>
+    <!-- Search screen - Search result placeholders. -->
+    <attr name="search_result_nothing_found_color" format="reference"/>
+    <attr name="search_result_error_color" format="reference"/>
+    <attr name="search_result_error_button_text_color" format="reference"/>
+    <attr name="search_result_loading" format="reference"/>
 
 </resources>

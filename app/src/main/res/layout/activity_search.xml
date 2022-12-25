@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/common_background_color"
     android:orientation="vertical">
 
@@ -52,7 +53,9 @@
             android:textSize="16sp"
             android:textColor="@color/yp_black"
             android:textCursorDrawable="@drawable/search_form_cursor"
-            android:autofillHints="no" />
+            android:autofillHints="no"
+            android:imeOptions="actionDone"
+            android:singleLine="true"/>
 
         <ImageView
             android:id="@+id/clearButton"
@@ -72,6 +75,65 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="24dp"
-        tools:listitem="@layout/search_result_item"/>
+        tools:listitem="@layout/search_result_item"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:id="@+id/search_result_placeholder_nothing_found"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/search_result_placeholder_icon_margin_top"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/search_result_placeholder_nothing_found_icon" />
+        <TextView
+            style="@style/SearchScreen_PlaceholderTextStyle"
+            android:text="@string/search_result_placeholder_nothing_found" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_result_placeholder_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/search_result_placeholder_icon_margin_top"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/search_result_placeholder_error_icon" />
+        <TextView
+            style="@style/SearchScreen_PlaceholderTextStyle"
+            android:text="@string/search_result_placeholder_error" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/repeat_request_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/search_result_placeholder_button_margin_top"
+            android:backgroundTint="?attr/search_result_error_color"
+            android:text="@string/search_result_placeholder_error_button"
+            android:textColor="?attr/search_result_error_button_text_color"
+            android:textAllCaps="false"
+            app:cornerRadius="@dimen/search_result_placeholder_button_corner_radius"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:indeterminateTint="?attr/search_result_error_color"
+        android:visibility="gone"/>
 
 </LinearLayout>
