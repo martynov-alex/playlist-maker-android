@@ -60,6 +60,8 @@ class SearchActivity : AppCompatActivity() {
         clearButton.setOnClickListener {
             inputEditText.setText("")
             inputEditText.hideKeyboard()
+            tracks.clear()
+            searchResultRv.adapter?.notifyDataSetChanged()
         }
 
         repeatRequestButton.setOnClickListener {
