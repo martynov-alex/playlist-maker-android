@@ -132,7 +132,7 @@ class SearchActivity : AppCompatActivity() {
                             tracks.clear()
                             tracks.addAll(response.body()?.results!!)
                             searchResultRv.adapter?.notifyDataSetChanged()
-                            showResult(RequestResult.TRACKS)
+                            showResult(RequestResult.DONE)
                         } else {
                             showResult(RequestResult.NOTHING_FOUND)
                         }
@@ -152,7 +152,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showResult(result: RequestResult) {
         when (result) {
-            RequestResult.TRACKS -> {
+            RequestResult.DONE -> {
                 searchResultRv.visibility = View.VISIBLE
                 progressBar.visibility = ProgressBar.GONE
                 nothingFoundPlaceholder.visibility = View.GONE
@@ -180,4 +180,4 @@ class SearchActivity : AppCompatActivity() {
     }
 }
 
-enum class RequestResult { TRACKS, LOADING, NOTHING_FOUND, ERROR }
+enum class RequestResult { DONE, LOADING, NOTHING_FOUND, ERROR }
