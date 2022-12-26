@@ -23,6 +23,8 @@ class SearchActivity : AppCompatActivity() {
     private var searchRequest: String = ""
     private val tracks = ArrayList<Track>()
 
+    enum class RequestResult { DONE, LOADING, NOTHING_FOUND, ERROR }
+
     companion object {
         const val SEARCH_REQUEST = "SEARCH_REQUEST"
     }
@@ -182,4 +184,3 @@ class SearchActivity : AppCompatActivity() {
     }
 }
 
-enum class RequestResult { DONE, LOADING, NOTHING_FOUND, ERROR }
