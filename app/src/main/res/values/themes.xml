@@ -37,6 +37,11 @@
         <item name="search_result_item_primary_text_color">@color/yp_black</item>
         <item name="search_result_item_secondary_text_color">@color/yp_text_gray</item>
         <item name="search_result_item_icons_color">@color/yp_text_gray</item>
+        <!-- Search screen - Search result placeholders. -->
+        <item name="search_result_nothing_found_color">@color/yp_black</item>
+        <item name="search_result_error_color">@color/yp_black</item>
+        <item name="search_result_error_button_text_color">@color/yp_white</item>
+        <item name="search_result_loading">@color/yp_black</item>
 
     </style>
 </resources>

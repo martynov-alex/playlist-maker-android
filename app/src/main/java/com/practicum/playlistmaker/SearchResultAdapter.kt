@@ -25,7 +25,7 @@ class SearchResultAdapter(private val tracks: List<Track>) : RecyclerView
 
             Glide.with(itemView.context)
                 .load(track.artworkUrl100)
-                .placeholder(R.drawable.search_result_placeholder_icon)
+                .placeholder(R.drawable.search_result_artwork_placeholder_icon)
                 .centerCrop()
                 .transform(RoundedCorners(5))
                 .into(artwork)

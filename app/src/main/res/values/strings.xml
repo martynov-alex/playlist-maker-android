@@ -29,5 +29,9 @@
     <!-- Search Screen -->
     <string name="search_screen_title">Поиск</string>
     <string name="search_form_hint">Поиск</string>
+    <string name="search_result_placeholder_nothing_found">Ничего не нашлось</string>
+    <string name="search_result_placeholder_error">Проблемы со связью\n\n
+        Загрузка не удалась. Проверьте подключение к интернету</string>
+    <string name="search_result_placeholder_error_button">Обновить</string>
 
 </resources>
