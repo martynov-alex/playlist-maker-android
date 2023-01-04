@@ -1,4 +1,4 @@
-package com.practicum.playlistmaker
+package com.practicum.playlistmaker.activity.search
 
 import android.os.Bundle
 import android.text.Editable
@@ -10,6 +10,11 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.practicum.playlistmaker.R
+import com.practicum.playlistmaker.common.hideKeyboard
+import com.practicum.playlistmaker.domain.Track
+import com.practicum.playlistmaker.repository.ITunesApi
+import com.practicum.playlistmaker.repository.TracksResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,38 +26,43 @@ class SearchActivity : AppCompatActivity() {
     private var searchRequest: String = ""
     private val tracks = ArrayList<Track>()
 
-    enum class RequestResult { DONE, LOADING, NOTHING_FOUND, ERROR }
+    enum class SearchScreenState { TRACKS, LOADING, NOTHING_FOUND, ERROR }
 
     companion object {
         const val SEARCH_REQUEST = "SEARCH_REQUEST"
     }
 
-    // Retrofit init
+    // Инициализация Retrofit
     private val retrofit =
         Retrofit.Builder().baseUrl(iTunesBaseUrl).addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    // Search service init
+    // Инициализация сервиса по работе с iTunes API
     private val iTunesService = retrofit.create(ITunesApi::class.java)
 
-    private lateinit var inputEditText: EditText
+    private lateinit var searchInputField: EditText
     private lateinit var clearButton: ImageView
     private lateinit var progressBar: ProgressBar
     private lateinit var searchResultRv: RecyclerView
     private lateinit var searchResultPlaceholder: LinearLayout
     private lateinit var searchResultPlaceholderIcon: ImageView
     private lateinit var searchResultPlaceholderText: TextView
-    private lateinit var searchResultPlaceholderButton: Button
+    private lateinit var searchResultPlaceholderReloadButton: Button
+
+    private lateinit var searchHistory: SearchHistory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        initViewVariables()
+        initVariables()
         initListeners()
 
+        // Загрузка истории поиска из памяти (Shared Preferences)
+        searchHistory.loadHistory()
+
         searchResultRv.layoutManager = LinearLayoutManager(this)
-        searchResultRv.adapter = SearchResultAdapter(tracks)
+        searchResultRv.adapter = SearchResultAdapter(tracks, false)
 
         val searchFormTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -67,17 +77,22 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        inputEditText.addTextChangedListener(searchFormTextWatcher)
+        searchInputField.addTextChangedListener(searchFormTextWatcher)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        searchHistory.saveHistory()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
-        val inputEditText = findViewById<EditText>(R.id.inputEditText)
+        val searchInputField = findViewById<EditText>(R.id.search_input_field)
         searchRequest = savedInstanceState.getString(SEARCH_REQUEST, "")
         Log.d("Search activity", "Restore $searchRequest")
 
-        inputEditText.setText(searchRequest)
+        searchInputField.setText(searchRequest)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -104,50 +119,50 @@ class SearchActivity : AppCompatActivity() {
                         if (response.body()?.results?.isNotEmpty() == true) {
                             tracks.clear()
                             tracks.addAll(response.body()?.results!!)
-                            searchResultRv.adapter?.notifyDataSetChanged()
-                            showResult(RequestResult.DONE)
+                            searchResultRv.adapter = SearchResultAdapter(tracks, false)
+                            showResult(SearchScreenState.TRACKS)
                         } else {
-                            showResult(RequestResult.NOTHING_FOUND)
+                            showResult(SearchScreenState.NOTHING_FOUND)
                         }
                     }
                     else -> {
-                        showResult(RequestResult.ERROR)
+                        showResult(SearchScreenState.ERROR)
                     }
                 }
             }
 
             override fun onFailure(call: Call<TracksResponse>, t: Throwable) {
-                showResult(RequestResult.ERROR)
+                showResult(SearchScreenState.ERROR)
             }
 
         })
     }
 
-    private fun showResult(result: RequestResult) {
+    private fun showResult(result: SearchScreenState) {
         when (result) {
-            RequestResult.DONE -> {
+            SearchScreenState.TRACKS -> {
                 searchResultRv.visibility = View.VISIBLE
                 progressBar.visibility = ProgressBar.GONE
                 searchResultPlaceholder.visibility = View.GONE
             }
-            RequestResult.LOADING -> {
+            SearchScreenState.LOADING -> {
                 searchResultRv.visibility = View.GONE
                 progressBar.visibility = ProgressBar.VISIBLE
                 searchResultPlaceholder.visibility = View.GONE
             }
-            RequestResult.NOTHING_FOUND -> {
+            SearchScreenState.NOTHING_FOUND -> {
                 searchResultPlaceholderIcon.setImageResource(R.drawable.search_result_placeholder_nothing_found_icon)
                 searchResultPlaceholderText.setText(R.string.search_result_placeholder_nothing_found)
-                searchResultPlaceholderButton.visibility = View.GONE
+                searchResultPlaceholderReloadButton.visibility = View.GONE
 
                 searchResultRv.visibility = View.GONE
                 progressBar.visibility = ProgressBar.GONE
                 searchResultPlaceholder.visibility = View.VISIBLE
             }
-            RequestResult.ERROR -> {
+            SearchScreenState.ERROR -> {
                 searchResultPlaceholderIcon.setImageResource(R.drawable.search_result_placeholder_error_icon)
                 searchResultPlaceholderText.setText(R.string.search_result_placeholder_error)
-                searchResultPlaceholderButton.visibility = View.VISIBLE
+                searchResultPlaceholderReloadButton.visibility = View.VISIBLE
 
                 searchResultRv.visibility = View.GONE
                 progressBar.visibility = ProgressBar.GONE
@@ -156,37 +171,66 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun initViewVariables() {
-        inputEditText = findViewById(R.id.inputEditText)
-        clearButton = findViewById(R.id.clearButton)
-        progressBar = findViewById(R.id.progressBar)
+    private fun initVariables() {
+        searchInputField = findViewById(R.id.search_input_field)
+        clearButton = findViewById(R.id.clear_button)
+        progressBar = findViewById(R.id.progress_bar)
         searchResultRv = findViewById(R.id.search_result_rv)
         searchResultPlaceholder = findViewById(R.id.search_result_placeholder)
         searchResultPlaceholderIcon = findViewById(R.id.search_result_placeholder_icon)
         searchResultPlaceholderText = findViewById(R.id.search_result_placeholder_text)
-        searchResultPlaceholderButton = findViewById(R.id.search_result_placeholder_button)
+        searchResultPlaceholderReloadButton =
+            findViewById(R.id.search_result_placeholder_reload_button)
+
+        // Создание экземпляра сервиса по работе с историей поиска
+        searchHistory = SearchHistory()
     }
 
     private fun initListeners() {
         clearButton.setOnClickListener {
-            inputEditText.setText("")
-            inputEditText.hideKeyboard()
+            searchInputField.setText("")
+            searchInputField.hideKeyboard()
             tracks.clear()
-            searchResultRv.adapter?.notifyDataSetChanged()
+            if (searchHistory.historyTracks.isNotEmpty()) {
+                searchResultRv.adapter =
+                    SearchResultAdapter(searchHistory.historyTracks.reversed(), true)
+            } else {
+                searchResultRv.adapter = SearchResultAdapter(tracks, false)
+            }
+            showResult(SearchScreenState.TRACKS)
         }
 
-        searchResultPlaceholderButton.setOnClickListener {
-            showResult(RequestResult.LOADING)
+        searchResultPlaceholderReloadButton.setOnClickListener {
+            showResult(SearchScreenState.LOADING)
             search(searchRequest)
         }
 
-        inputEditText.setOnEditorActionListener { _, actionId, _ ->
+        searchInputField.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                showResult(RequestResult.LOADING)
+                showResult(SearchScreenState.LOADING)
                 search(searchRequest)
             }
             false
         }
+
+        searchInputField.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && searchHistory.historyTracks.isNotEmpty()) {
+                searchResultRv.adapter =
+                    SearchResultAdapter(searchHistory.historyTracks.reversed(), true)
+                showResult(SearchScreenState.TRACKS)
+            }
+        }
+    }
+
+    fun addTrackToHistory(track: Track) {
+        searchHistory.addTrack(track)
+    }
+
+    fun clearHistoryTracks() {
+        searchHistory.clearHistory()
+        tracks.clear()
+        searchResultRv.adapter = SearchResultAdapter(tracks, false)
+        showResult(SearchScreenState.TRACKS)
     }
 }
 

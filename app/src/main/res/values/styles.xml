@@ -2,7 +2,7 @@
 <resources>
     <!-- Common styles -->
 
-    <style name="Common_PanelHeader_Text">
+    <style name="common_panel_header_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/common_panel_header_margin_start</item>
@@ -13,7 +13,7 @@
         <item name="android:textSize">@dimen/common_panel_header_text_size</item>
     </style>
 
-    <style name="Common_PanelHeader_BackButton">
+    <style name="common_panel_header_back_button">
         <item name="android:src">@drawable/common_arrow_back_icon</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
@@ -21,9 +21,23 @@
         <item name="android:backgroundTint">?attr/common_background_color</item>
     </style>
 
+    <style name="common_oval_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:backgroundTint">?attr/common_oval_button_color</item>
+
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textColor">?attr/common_oval_button_text_color</item>
+        <item name="android:textSize">@dimen/common_oval_button_text_size</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="cornerRadius">@dimen/common_oval_button_corner_radius</item>
+    </style>
+
     <!-- Main screen styles -->
 
-    <style name="MainScreen_ButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+    <style name="main_screen_button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_weight">1</item>
@@ -47,7 +61,7 @@
 
     <!-- Settings screen styles -->
 
-    <style name="SettingsScreen_ItemTextStyle">
+    <style name="settings_screen_item_text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/settings_item_title_margin_start</item>
@@ -58,7 +72,7 @@
         <item name="android:textSize">@dimen/settings_item_text_size</item>
     </style>
 
-    <style name="SettingsScreen_ItemButtonStyle">
+    <style name="settings_screen_item_button">
         <item name="android:layout_width">@dimen/settings_button_icon_width</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_marginEnd">@dimen/settings_item_icon_margin_end</item>
@@ -72,7 +86,7 @@
 
     <!-- Search screen styles -->
 
-    <style name="SearchScreen_PlaceholderTextStyle">
+    <style name="search_screen_placeholder_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/search_result_placeholder_text_margin_top</item>
@@ -81,7 +95,7 @@
         <item name="android:gravity">center</item>
 
         <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textColor">?attr/search_result_nothing_found_color</item>
+        <item name="android:textColor">?attr/search_result_placeholder_text_color</item>
         <item name="android:textSize">@dimen/search_result_placeholder_text_size</item>
     </style>
 

@@ -1,4 +1,8 @@
 <resources>
+    <!-- App -->
+    <string name="shared_preferences_file_name">shared_preferences</string>
+    <string name="dark_theme_key">dark_theme</string>
+    <string name="history_tracks_key">history_tracks</string>
 
     <!-- Main Screen -->
     <string name="main_screen_title">Playlist Maker</string>
@@ -32,6 +36,8 @@
     <string name="search_result_placeholder_nothing_found">Ничего не нашлось</string>
     <string name="search_result_placeholder_error">Проблемы со связью\n\n
         Загрузка не удалась. Проверьте подключение к интернету</string>
-    <string name="search_result_placeholder_error_button">Обновить</string>
+    <string name="search_result_placeholder_error_reload_button">Обновить</string>
+    <string name="search_result_placeholder_history">Вы искали</string>
+    <string name="search_result_placeholder_history_clear_button">Очистить историю</string>
 
 </resources>

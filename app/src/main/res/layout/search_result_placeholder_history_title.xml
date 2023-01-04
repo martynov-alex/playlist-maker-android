@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="52dp"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/search_result_placeholder_history"
+        android:fontFamily="@font/ys_display_medium"
+        android:textColor="?attr/search_result_placeholder_text_color"
+        android:textSize="@dimen/search_result_placeholder_text_size"
+        android:visibility="visible" />
+</FrameLayout>

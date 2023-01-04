@@ -4,8 +4,10 @@
     <!-- Common. -->
     <dimen name="common_panel_header_margin_start">12dp</dimen>
     <dimen name="common_panel_header_icon_padding">12dp</dimen>
+    <dimen name="common_oval_button_corner_radius">54dp</dimen>
 
     <dimen name="common_panel_header_text_size">22sp</dimen>
+    <dimen name="common_oval_button_text_size">14sp</dimen>
 
     <!-- Main screen. -->
     <dimen name="main_button_corner_radius">16dp</dimen>
@@ -35,7 +37,7 @@
     <dimen name="search_result_placeholder_text_margin_top">16dp</dimen>
     <dimen name="search_result_placeholder_text_margin_start_end">24dp</dimen>
     <dimen name="search_result_placeholder_button_margin_top">24dp</dimen>
-    <dimen name="search_result_placeholder_button_corner_radius">54dp</dimen>
+
 
     <dimen name="search_result_item_primary_text_size">16sp</dimen>
     <dimen name="search_result_item_secondary_text_size">11sp</dimen>
