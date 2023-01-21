@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatDelegate
 class App : Application() {
     var isDarkTheme: Boolean = false
 
-    private lateinit var sharedPreferencesFileName: String
-    private lateinit var darkThemeKey: String
-
-
     companion object {
+        const val sharedPreferencesFileName = "shared_preferences"
+        const val darkThemeKey = "dark_theme"
+        const val historyTracksKey = "history_tracks"
+
         lateinit var sharedPrefs: SharedPreferences
         lateinit var appContext: Context
     }
@@ -51,10 +51,6 @@ class App : Application() {
     }
 
     private fun initVariables() {
-        sharedPreferencesFileName =
-            applicationContext.getString(R.string.shared_preferences_file_name)
-        darkThemeKey = applicationContext.getString(R.string.dark_theme_key)
-
         // Инициализируем контекст приложения
         appContext = applicationContext
 

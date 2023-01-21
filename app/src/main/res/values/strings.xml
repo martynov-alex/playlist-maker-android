@@ -1,8 +1,4 @@
 <resources>
-    <!-- App -->
-    <string name="shared_preferences_file_name">shared_preferences</string>
-    <string name="dark_theme_key">dark_theme</string>
-    <string name="history_tracks_key">history_tracks</string>
 
     <!-- Main Screen -->
     <string name="main_screen_title">Playlist Maker</string>

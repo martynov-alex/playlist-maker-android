@@ -3,13 +3,12 @@ package com.practicum.playlistmaker.activity.search
 import android.util.Log
 import com.google.gson.Gson
 import com.practicum.playlistmaker.App
-import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.domain.Track
 
 class SearchHistory {
     var historyTracks = ArrayList<Track>()
 
-    private val historyTracksKey = App.appContext.getString(R.string.history_tracks_key)
+    private val historyTracksKey = App.historyTracksKey
 
     fun loadHistory() {
         historyTracks.clear()
