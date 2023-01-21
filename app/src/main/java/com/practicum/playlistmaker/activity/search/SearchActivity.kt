@@ -1,5 +1,6 @@
 package com.practicum.playlistmaker.activity.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.practicum.playlistmaker.R
+import com.practicum.playlistmaker.activity.main.MainActivity
 import com.practicum.playlistmaker.common.hideKeyboard
 import com.practicum.playlistmaker.domain.Track
 import com.practicum.playlistmaker.repository.ITunesApi
@@ -41,6 +43,7 @@ class SearchActivity : AppCompatActivity() {
     private val iTunesService = retrofit.create(ITunesApi::class.java)
 
     private lateinit var searchInputField: EditText
+    private lateinit var backButton: ImageView
     private lateinit var clearButton: ImageView
     private lateinit var progressBar: ProgressBar
     private lateinit var searchResultRv: RecyclerView
@@ -172,6 +175,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun initVariables() {
+        backButton = findViewById(R.id.back_button)
         searchInputField = findViewById(R.id.search_input_field)
         clearButton = findViewById(R.id.clear_button)
         progressBar = findViewById(R.id.progress_bar)
@@ -187,6 +191,11 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
+        backButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         clearButton.setOnClickListener {
             searchInputField.setText("")
             searchInputField.hideKeyboard()

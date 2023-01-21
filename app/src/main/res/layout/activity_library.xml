@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.library.LibraryActivity">
+    android:background="?attr/common_background_color"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="8dp"
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/back_button"
+            style="@style/common_panel_header_back_button"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            style="@style/common_panel_header_text"
+            android:text="@string/library_screen_title" />
+    </LinearLayout>
+
+</LinearLayout>

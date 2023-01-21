@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import com.practicum.playlistmaker.App
 import com.practicum.playlistmaker.R
+import com.practicum.playlistmaker.activity.main.MainActivity
 
 class SettingsActivity : AppCompatActivity() {
 
+    private lateinit var backButton: ImageView
     private lateinit var themeSwitcher: SwitchCompat
     private lateinit var shareButton: ImageView
     private lateinit var supportButton: ImageView
@@ -26,6 +28,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun initVariables() {
+        backButton = findViewById(R.id.back_button)
         themeSwitcher = findViewById(R.id.theme_switcher)
         shareButton = findViewById(R.id.share_button)
         supportButton = findViewById(R.id.support_button)
@@ -33,6 +36,11 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
+        backButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         themeSwitcher.setOnCheckedChangeListener() { switcher, checked ->
             if (switcher?.isPressed == true) (applicationContext as App).switchAndSaveTheme(checked)
         }

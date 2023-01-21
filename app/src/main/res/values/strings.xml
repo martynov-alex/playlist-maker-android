@@ -40,4 +40,7 @@
     <string name="search_result_placeholder_history">Вы искали</string>
     <string name="search_result_placeholder_history_clear_button">Очистить историю</string>
 
+    <!-- Library Screen -->
+    <string name="library_screen_title">Медиатека</string>
+
 </resources>

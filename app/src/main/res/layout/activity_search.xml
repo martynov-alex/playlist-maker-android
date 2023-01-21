@@ -13,6 +13,7 @@
         android:padding="4dp">
 
         <ImageView
+            android:id="@+id/back_button"
             style="@style/common_panel_header_back_button"
             tools:ignore="ContentDescription" />
 
@@ -37,7 +38,8 @@
             android:paddingTop="10dp"
             android:paddingEnd="8dp"
             android:paddingBottom="10dp"
-            android:src="@drawable/search_form_search_icon" />
+            android:src="@drawable/search_form_search_icon"
+            tools:ignore="ContentDescription" />
 
         <EditText
             android:id="@+id/search_input_field"
@@ -66,7 +68,8 @@
             android:paddingEnd="12dp"
             android:paddingBottom="10dp"
             android:src="@drawable/search_form_clear_icon"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:ignore="ContentDescription"/>
 
     </LinearLayout>
 
@@ -92,7 +95,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/search_result_placeholder_error_icon" />
+            android:src="@drawable/search_result_placeholder_error_icon"
+            tools:ignore="ContentDescription"/>
 
         <TextView
             android:id="@+id/search_result_placeholder_text"
