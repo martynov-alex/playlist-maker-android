@@ -28,4 +28,7 @@
     <!-- Search screen - Search result placeholders. -->
     <attr name="search_result_placeholder_text_color" format="reference"/>
 
+    <!-- Audio Player screen. -->
+    <attr name="play_button_color" format="reference"/>
+
 </resources>

@@ -14,7 +14,7 @@
         android:layout_height="@dimen/search_result_item_artwork_size"
         android:layout_margin="@dimen/search_result_item_margin_artwork"
         android:layout_weight="0"
-        app:srcCompat="@drawable/ic_search_result_artwork_placeholder_icon" />
+        app:srcCompat="@drawable/ic_search_result_artwork_placeholder" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_search_result_dot_icon" />
+                app:srcCompat="@drawable/ic_search_result_dot" />
 
             <TextView
                 android:id="@+id/item_track_time"
@@ -71,6 +71,6 @@
         android:layout_marginTop="@dimen/search_result_item_details_button_margin_top"
         android:layout_marginEnd="@dimen/search_result_item_details_button_margin_end"
         android:layout_weight="0"
-        app:srcCompat="@drawable/ic_search_result_arrow_forward_icon" />
+        app:srcCompat="@drawable/ic_search_result_arrow_forward" />
 </LinearLayout>
 
