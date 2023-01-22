@@ -11,7 +11,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.practicum.playlistmaker.App
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.activity.main.MainActivity
 import com.practicum.playlistmaker.common.hideKeyboard
@@ -89,8 +88,8 @@ class SearchActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
-        super.onPause()
         searchHistory.saveHistory()
+        super.onPause()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -127,7 +126,7 @@ class SearchActivity : AppCompatActivity() {
                         if (response.body()?.results?.isNotEmpty() == true) {
                             tracks.clear()
                             tracks.addAll(response.body()?.results!!)
-                            searchResultRvAdapter.setSearchHistory(false)
+                            searchResultRvAdapter.showSearchHistory(false)
                             showResult(SearchScreenState.TRACKS)
                         } else {
                             showResult(SearchScreenState.NOTHING_FOUND)
@@ -206,11 +205,10 @@ class SearchActivity : AppCompatActivity() {
             searchInputField.hideKeyboard()
             tracks.clear()
             if (searchHistory.historyTracks.isNotEmpty()) {
-                tracks.clear()
                 tracks.addAll(searchHistory.historyTracks.reversed())
-                searchResultRvAdapter.setSearchHistory(true)
+                searchResultRvAdapter.showSearchHistory(true)
             } else {
-                searchResultRvAdapter.setSearchHistory(false)
+                searchResultRvAdapter.showSearchHistory(false)
             }
             showResult(SearchScreenState.TRACKS)
         }
@@ -232,7 +230,7 @@ class SearchActivity : AppCompatActivity() {
             if (hasFocus && searchHistory.historyTracks.isNotEmpty()) {
                 tracks.clear()
                 tracks.addAll(searchHistory.historyTracks.reversed())
-                searchResultRvAdapter.setSearchHistory(true)
+                searchResultRvAdapter.showSearchHistory(true)
                 showResult(SearchScreenState.TRACKS)
             }
         }
@@ -242,17 +240,17 @@ class SearchActivity : AppCompatActivity() {
         searchHistory.addTrack(track)
 
         Toast.makeText(
-            App.appContext, "Трек ${track.trackName} добавлен", Toast.LENGTH_SHORT
+            this, "Трек ${track.trackName} добавлен", Toast.LENGTH_SHORT
         ).show()
     }
 
     private fun clearHistory() {
         searchHistory.clearHistory()
         tracks.clear()
-        searchResultRvAdapter.setSearchHistory(false)
+        searchResultRvAdapter.showSearchHistory(false)
         showResult(SearchScreenState.TRACKS)
 
-        Toast.makeText(App.appContext, "История поиска очищена", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "История поиска очищена", Toast.LENGTH_SHORT).show()
     }
 }
 
