@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/common_background_color"
     android:orientation="vertical">
 
@@ -14,11 +13,12 @@
         android:padding="4dp">
 
         <ImageView
-            style="@style/Common_PanelHeader_BackButton"
+            android:id="@+id/back_button"
+            style="@style/common_panel_header_back_button"
             tools:ignore="ContentDescription" />
 
         <TextView
-            style="@style/Common_PanelHeader_Text"
+            style="@style/common_panel_header_text"
             android:text="@string/search_screen_title" />
     </LinearLayout>
 
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/search_form_background"
         android:orientation="horizontal">
 
@@ -37,10 +38,11 @@
             android:paddingTop="10dp"
             android:paddingEnd="8dp"
             android:paddingBottom="10dp"
-            android:src="@drawable/search_form_search_icon" />
+            android:src="@drawable/search_form_search_icon"
+            tools:ignore="ContentDescription" />
 
         <EditText
-            android:id="@+id/inputEditText"
+            android:id="@+id/search_input_field"
             android:layout_width="0dp"
             android:layout_height="36dp"
             android:layout_weight="1"
@@ -58,7 +60,7 @@
             android:singleLine="true"/>
 
         <ImageView
-            android:id="@+id/clearButton"
+            android:id="@+id/clear_button"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:paddingStart="8dp"
@@ -66,7 +68,8 @@
             android:paddingEnd="12dp"
             android:paddingBottom="10dp"
             android:src="@drawable/search_form_clear_icon"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:ignore="ContentDescription"/>
 
     </LinearLayout>
 
@@ -74,9 +77,9 @@
         android:id="@+id/search_result_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         tools:listitem="@layout/search_result_item"
-        android:visibility="visible"/>
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/search_result_placeholder"
@@ -92,32 +95,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/search_result_placeholder_error_icon" />
+            android:src="@drawable/search_result_placeholder_error_icon"
+            tools:ignore="ContentDescription"/>
 
         <TextView
             android:id="@+id/search_result_placeholder_text"
-            style="@style/SearchScreen_PlaceholderTextStyle"
+            style="@style/search_screen_placeholder_text"
             android:text="@string/search_result_placeholder_error" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/search_result_placeholder_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/search_result_placeholder_reload_button"
+            style="@style/common_oval_button"
             android:layout_marginTop="@dimen/search_result_placeholder_button_margin_top"
-            android:backgroundTint="?attr/search_result_error_color"
-            android:text="@string/search_result_placeholder_error_button"
-            android:textColor="?attr/search_result_error_button_text_color"
-            android:textAllCaps="false"
-            app:cornerRadius="@dimen/search_result_placeholder_button_corner_radius"/>
+            android:text="@string/search_result_placeholder_error_reload_button" />
 
     </LinearLayout>
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:indeterminateTint="?attr/search_result_error_color"
         android:visibility="gone"/>
 
 </LinearLayout>

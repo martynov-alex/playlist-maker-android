@@ -1,19 +1,49 @@
-package com.practicum.playlistmaker
+package com.practicum.playlistmaker.activity.settings
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
+import com.practicum.playlistmaker.App
+import com.practicum.playlistmaker.R
+import com.practicum.playlistmaker.activity.main.MainActivity
 
 class SettingsActivity : AppCompatActivity() {
+
+    private lateinit var backButton: ImageView
+    private lateinit var themeSwitcher: SwitchCompat
+    private lateinit var shareButton: ImageView
+    private lateinit var supportButton: ImageView
+    private lateinit var offerButton: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        val shareButton = findViewById<ImageView>(R.id.share_button)
-        val supportButton = findViewById<ImageView>(R.id.support_button)
-        val offerButton = findViewById<ImageView>(R.id.offer_button)
+        initVariables()
+        setListeners()
+        themeSwitcher.isChecked = (applicationContext as App).isDarkTheme
+    }
+
+    private fun initVariables() {
+        backButton = findViewById(R.id.back_button)
+        themeSwitcher = findViewById(R.id.theme_switcher)
+        shareButton = findViewById(R.id.share_button)
+        supportButton = findViewById(R.id.support_button)
+        offerButton = findViewById(R.id.offer_button)
+    }
+
+    private fun setListeners() {
+        backButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        themeSwitcher.setOnCheckedChangeListener() { switcher, checked ->
+            if (switcher?.isPressed == true) (applicationContext as App).switchAndSaveTheme(checked)
+        }
 
         shareButton.setOnClickListener {
             val share = Intent.createChooser(Intent().apply {

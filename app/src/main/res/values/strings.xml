@@ -32,6 +32,11 @@
     <string name="search_result_placeholder_nothing_found">Ничего не нашлось</string>
     <string name="search_result_placeholder_error">Проблемы со связью\n\n
         Загрузка не удалась. Проверьте подключение к интернету</string>
-    <string name="search_result_placeholder_error_button">Обновить</string>
+    <string name="search_result_placeholder_error_reload_button">Обновить</string>
+    <string name="search_result_placeholder_history">Вы искали</string>
+    <string name="search_result_placeholder_history_clear_button">Очистить историю</string>
+
+    <!-- Library Screen -->
+    <string name="library_screen_title">Медиатека</string>
 
 </resources>
