@@ -19,49 +19,27 @@ class SearchResultAdapter(
     private val isHistory: Boolean,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    class TrackListItemHolder(trackListItemView: View) :
-        RecyclerView.ViewHolder(trackListItemView) {
-        private val trackName: TextView = trackListItemView.findViewById(R.id.item_track_name)
-        private val artistName: TextView = trackListItemView.findViewById(R.id.item_artist_name)
-        private val trackTime: TextView = trackListItemView.findViewById(R.id.item_track_time)
-        private val artwork: ImageView = trackListItemView.findViewById(R.id.item_artwork)
-
-        fun bind(track: Track) {
-            trackName.text = track.trackName
-            artistName.text = track.artistName
-            trackTime.text = track.trackTime
-
-            Glide.with(itemView.context).load(track.artworkUrl100)
-                .placeholder(R.drawable.search_result_artwork_placeholder_icon).centerCrop()
-                .transform(RoundedCorners(5)).into(artwork)
-        }
-    }
-
-    class HistoryTitleHolder(historyTitleView: View) : RecyclerView.ViewHolder(historyTitleView) {}
-    class ClearHistoryButtonHolder(clearHistoryButtonView: View) :
-        RecyclerView.ViewHolder(clearHistoryButtonView) {}
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             R.layout.search_result_item -> {
                 val view = LayoutInflater.from(parent.context).inflate(
                     R.layout.search_result_item, parent, false
                 )
-                TrackListItemHolder(view)
+                SearchResultViewHolder.TrackListItemHolder(view)
             }
 
             R.layout.search_result_placeholder_history_title -> {
                 val view = LayoutInflater.from(parent.context).inflate(
                     R.layout.search_result_placeholder_history_title, parent, false
                 )
-                HistoryTitleHolder(view)
+                SearchResultViewHolder.HistoryTitleHolder(view)
             }
 
             R.layout.search_result_placeholder_history_clear_button -> {
                 val view = LayoutInflater.from(parent.context).inflate(
                     R.layout.search_result_placeholder_history_clear_button, parent, false
                 )
-                ClearHistoryButtonHolder(view)
+                SearchResultViewHolder.ClearHistoryButtonHolder(view)
             }
             else -> throw IllegalArgumentException("Unknown view type $viewType")
         }
@@ -70,7 +48,8 @@ class SearchResultAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (isHistory) {
             when (getItemViewType(position)) {
-                R.layout.search_result_item -> (holder as TrackListItemHolder).bind(tracks[position - 1])
+                R.layout.search_result_item -> (holder as SearchResultViewHolder
+                .TrackListItemHolder).bind(tracks[position - 1])
                 R.layout.search_result_placeholder_history_title -> {}
                 R.layout.search_result_placeholder_history_clear_button -> {
                     val context = holder.itemView.context
@@ -90,7 +69,7 @@ class SearchResultAdapter(
         } else {
             val context = holder.itemView.context
 
-            (holder as TrackListItemHolder).bind(tracks[position])
+            (holder as SearchResultViewHolder.TrackListItemHolder).bind(tracks[position])
 
             val addToHistoryButton: LinearLayout = holder.itemView.findViewById(
                 R.id.search_result_item
@@ -121,4 +100,28 @@ class SearchResultAdapter(
             R.layout.search_result_item
         }
     }
+}
+
+sealed class SearchResultViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class TrackListItemHolder(trackListItemView: View) :
+        RecyclerView.ViewHolder(trackListItemView) {
+        private val trackName: TextView = trackListItemView.findViewById(R.id.item_track_name)
+        private val artistName: TextView = trackListItemView.findViewById(R.id.item_artist_name)
+        private val trackTime: TextView = trackListItemView.findViewById(R.id.item_track_time)
+        private val artwork: ImageView = trackListItemView.findViewById(R.id.item_artwork)
+
+        fun bind(track: Track) {
+            trackName.text = track.trackName
+            artistName.text = track.artistName
+            trackTime.text = track.trackTime
+
+            Glide.with(itemView.context).load(track.artworkUrl100)
+                .placeholder(R.drawable.search_result_artwork_placeholder_icon).centerCrop()
+                .transform(RoundedCorners(5)).into(artwork)
+        }
+    }
+
+    class HistoryTitleHolder(historyTitleView: View) : RecyclerView.ViewHolder(historyTitleView) {}
+    class ClearHistoryButtonHolder(clearHistoryButtonView: View) :
+        RecyclerView.ViewHolder(clearHistoryButtonView) {}
 }
