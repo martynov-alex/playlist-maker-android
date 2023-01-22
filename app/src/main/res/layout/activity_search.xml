@@ -28,7 +28,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/search_form_background"
+        android:background="@drawable/ic_search_form_background"
         android:orientation="horizontal">
 
         <ImageView
@@ -38,7 +38,7 @@
             android:paddingTop="10dp"
             android:paddingEnd="8dp"
             android:paddingBottom="10dp"
-            android:src="@drawable/search_form_search_icon"
+            android:src="@drawable/ic_search_form_search_icon"
             tools:ignore="ContentDescription" />
 
         <EditText
@@ -54,7 +54,7 @@
             android:fontFamily="@font/ys_display_regular"
             android:textSize="16sp"
             android:textColor="@color/yp_black"
-            android:textCursorDrawable="@drawable/search_form_cursor"
+            android:textCursorDrawable="@drawable/ic_search_form_cursor"
             android:autofillHints="no"
             android:imeOptions="actionDone"
             android:singleLine="true"/>
@@ -67,7 +67,7 @@
             android:paddingTop="10dp"
             android:paddingEnd="12dp"
             android:paddingBottom="10dp"
-            android:src="@drawable/search_form_clear_icon"
+            android:src="@drawable/ic_search_form_clear_icon"
             android:visibility="gone"
             tools:ignore="ContentDescription"/>
 
@@ -95,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/search_result_placeholder_error_icon"
+            android:src="@drawable/ic_search_result_placeholder_error_icon"
             tools:ignore="ContentDescription"/>
 
         <TextView

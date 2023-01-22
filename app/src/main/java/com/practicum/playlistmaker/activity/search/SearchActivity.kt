@@ -154,7 +154,7 @@ class SearchActivity : AppCompatActivity() {
                 searchResultPlaceholder.visibility = View.GONE
             }
             SearchScreenState.NOTHING_FOUND -> {
-                searchResultPlaceholderIcon.setImageResource(R.drawable.search_result_placeholder_nothing_found_icon)
+                searchResultPlaceholderIcon.setImageResource(R.drawable.ic_search_result_placeholder_nothing_found_icon)
                 searchResultPlaceholderText.setText(R.string.search_result_placeholder_nothing_found)
                 searchResultPlaceholderReloadButton.visibility = View.GONE
 
@@ -163,7 +163,7 @@ class SearchActivity : AppCompatActivity() {
                 searchResultPlaceholder.visibility = View.VISIBLE
             }
             SearchScreenState.ERROR -> {
-                searchResultPlaceholderIcon.setImageResource(R.drawable.search_result_placeholder_error_icon)
+                searchResultPlaceholderIcon.setImageResource(R.drawable.ic_search_result_placeholder_error_icon)
                 searchResultPlaceholderText.setText(R.string.search_result_placeholder_error)
                 searchResultPlaceholderReloadButton.visibility = View.VISIBLE
 
