@@ -238,10 +238,11 @@ class SearchActivity : AppCompatActivity() {
 
     private fun openTrack(track: Track) {
         searchHistory.addTrack(track)
-
+        //val intent = Intent(this, AuActivity::class.java)
         Toast.makeText(
             this, "Трек ${track.trackName} добавлен", Toast.LENGTH_SHORT
         ).show()
+
     }
 
     private fun clearHistory() {
