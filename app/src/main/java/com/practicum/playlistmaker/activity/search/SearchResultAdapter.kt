@@ -15,9 +15,9 @@ import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.domain.Track
 
 class SearchResultAdapter(
-    private val tracks: List<Track>,
-    private val isHistory: Boolean,
+    private var tracks: List<Track>,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private var isHistory: Boolean = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -99,6 +99,11 @@ class SearchResultAdapter(
         } else {
             R.layout.search_result_item
         }
+    }
+
+    fun setSearchHistory(isOn: Boolean) {
+        isHistory = isOn
+        notifyDataSetChanged()
     }
 }
 
