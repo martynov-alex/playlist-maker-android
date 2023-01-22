@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.practicum.playlistmaker.App
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.activity.main.MainActivity
 import com.practicum.playlistmaker.common.hideKeyboard
@@ -66,7 +67,9 @@ class SearchActivity : AppCompatActivity() {
         searchHistory.loadHistory()
 
         searchResultRv.layoutManager = LinearLayoutManager(this)
-        searchResultRvAdapter = SearchResultAdapter(tracks)
+        searchResultRvAdapter = SearchResultAdapter(tracks,
+            openTrack = { track -> openTrack(track) },
+            clearHistory = { clearHistory() })
         searchResultRv.adapter = searchResultRvAdapter
 
         val searchFormTextWatcher = object : TextWatcher {
@@ -235,15 +238,21 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    fun addTrackToHistory(track: Track) {
+    private fun openTrack(track: Track) {
         searchHistory.addTrack(track)
+
+        Toast.makeText(
+            App.appContext, "Трек ${track.trackName} добавлен", Toast.LENGTH_SHORT
+        ).show()
     }
 
-    fun clearHistoryTracks() {
+    private fun clearHistory() {
         searchHistory.clearHistory()
         tracks.clear()
         searchResultRvAdapter.setSearchHistory(false)
         showResult(SearchScreenState.TRACKS)
+
+        Toast.makeText(App.appContext, "История поиска очищена", Toast.LENGTH_SHORT).show()
     }
 }
 
