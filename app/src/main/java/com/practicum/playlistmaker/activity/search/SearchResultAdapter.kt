@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -15,9 +14,11 @@ import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.domain.Track
 
 class SearchResultAdapter(
-    private val tracks: List<Track>,
-    private val isHistory: Boolean,
+    private var tracks: List<Track>,
+    private val openTrack: (Track) -> Unit,
+    private val clearHistory: () -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private var isHistory: Boolean = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -48,27 +49,20 @@ class SearchResultAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (isHistory) {
             when (getItemViewType(position)) {
-                R.layout.search_result_item -> (holder as SearchResultViewHolder
-                .TrackListItemHolder).bind(tracks[position - 1])
+                R.layout.search_result_item -> (holder as SearchResultViewHolder.TrackListItemHolder).bind(
+                    tracks[position - 1]
+                )
                 R.layout.search_result_placeholder_history_title -> {}
                 R.layout.search_result_placeholder_history_clear_button -> {
-                    val context = holder.itemView.context
-
                     val clearHistoryButton: MaterialButton = holder.itemView.findViewById(
                         R.id.search_result_placeholder_history_clear_button
                     )
                     clearHistoryButton.setOnClickListener {
-                        Toast.makeText(
-                            context, "История поиска очищена", Toast.LENGTH_SHORT
-                        ).show()
-
-                        if (context is SearchActivity) context.clearHistoryTracks()
+                        clearHistory()
                     }
                 }
             }
         } else {
-            val context = holder.itemView.context
-
             (holder as SearchResultViewHolder.TrackListItemHolder).bind(tracks[position])
 
             val addToHistoryButton: LinearLayout = holder.itemView.findViewById(
@@ -76,13 +70,7 @@ class SearchResultAdapter(
             )
 
             addToHistoryButton.setOnClickListener {
-                Toast.makeText(
-                    context,
-                    "Трек ${tracks[position].trackName} добавлен",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                if (context is SearchActivity) context.addTrackToHistory(tracks[position])
+                openTrack(tracks[position])
             }
         }
     }
@@ -100,9 +88,14 @@ class SearchResultAdapter(
             R.layout.search_result_item
         }
     }
+
+    fun setSearchHistory(isOn: Boolean) {
+        isHistory = isOn
+        notifyDataSetChanged()
+    }
 }
 
-sealed class SearchResultViewHolder(view: View): RecyclerView.ViewHolder(view) {
+sealed class SearchResultViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     class TrackListItemHolder(trackListItemView: View) :
         RecyclerView.ViewHolder(trackListItemView) {
         private val trackName: TextView = trackListItemView.findViewById(R.id.item_track_name)

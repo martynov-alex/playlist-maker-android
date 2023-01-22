@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.practicum.playlistmaker.App
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.activity.main.MainActivity
 import com.practicum.playlistmaker.common.hideKeyboard
@@ -47,6 +48,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var clearButton: ImageView
     private lateinit var progressBar: ProgressBar
     private lateinit var searchResultRv: RecyclerView
+    private lateinit var searchResultRvAdapter: SearchResultAdapter
     private lateinit var searchResultPlaceholder: LinearLayout
     private lateinit var searchResultPlaceholderIcon: ImageView
     private lateinit var searchResultPlaceholderText: TextView
@@ -65,7 +67,10 @@ class SearchActivity : AppCompatActivity() {
         searchHistory.loadHistory()
 
         searchResultRv.layoutManager = LinearLayoutManager(this)
-        searchResultRv.adapter = SearchResultAdapter(tracks, false)
+        searchResultRvAdapter = SearchResultAdapter(tracks,
+            openTrack = { track -> openTrack(track) },
+            clearHistory = { clearHistory() })
+        searchResultRv.adapter = searchResultRvAdapter
 
         val searchFormTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -122,7 +127,7 @@ class SearchActivity : AppCompatActivity() {
                         if (response.body()?.results?.isNotEmpty() == true) {
                             tracks.clear()
                             tracks.addAll(response.body()?.results!!)
-                            searchResultRv.adapter = SearchResultAdapter(tracks, false)
+                            searchResultRvAdapter.setSearchHistory(false)
                             showResult(SearchScreenState.TRACKS)
                         } else {
                             showResult(SearchScreenState.NOTHING_FOUND)
@@ -201,10 +206,11 @@ class SearchActivity : AppCompatActivity() {
             searchInputField.hideKeyboard()
             tracks.clear()
             if (searchHistory.historyTracks.isNotEmpty()) {
-                searchResultRv.adapter =
-                    SearchResultAdapter(searchHistory.historyTracks.reversed(), true)
+                tracks.clear()
+                tracks.addAll(searchHistory.historyTracks.reversed())
+                searchResultRvAdapter.setSearchHistory(true)
             } else {
-                searchResultRv.adapter = SearchResultAdapter(tracks, false)
+                searchResultRvAdapter.setSearchHistory(false)
             }
             showResult(SearchScreenState.TRACKS)
         }
@@ -224,22 +230,29 @@ class SearchActivity : AppCompatActivity() {
 
         searchInputField.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus && searchHistory.historyTracks.isNotEmpty()) {
-                searchResultRv.adapter =
-                    SearchResultAdapter(searchHistory.historyTracks.reversed(), true)
+                tracks.clear()
+                tracks.addAll(searchHistory.historyTracks.reversed())
+                searchResultRvAdapter.setSearchHistory(true)
                 showResult(SearchScreenState.TRACKS)
             }
         }
     }
 
-    fun addTrackToHistory(track: Track) {
+    private fun openTrack(track: Track) {
         searchHistory.addTrack(track)
+
+        Toast.makeText(
+            App.appContext, "Трек ${track.trackName} добавлен", Toast.LENGTH_SHORT
+        ).show()
     }
 
-    fun clearHistoryTracks() {
+    private fun clearHistory() {
         searchHistory.clearHistory()
         tracks.clear()
-        searchResultRv.adapter = SearchResultAdapter(tracks, false)
+        searchResultRvAdapter.setSearchHistory(false)
         showResult(SearchScreenState.TRACKS)
+
+        Toast.makeText(App.appContext, "История поиска очищена", Toast.LENGTH_SHORT).show()
     }
 }
 
