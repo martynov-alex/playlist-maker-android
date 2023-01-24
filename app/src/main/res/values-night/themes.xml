@@ -42,5 +42,9 @@
         <item name="common_oval_button_color">@color/yp_white</item>
         <item name="common_oval_button_text_color">@color/yp_black</item>
 
+        <!-- Audio Player screen. -->
+        <item name="audio_player_play_button_color">@color/yp_white</item>
+        <item name="audio_player_track_info_text_color">@color/yp_white</item>
+
     </style>
 </resources>

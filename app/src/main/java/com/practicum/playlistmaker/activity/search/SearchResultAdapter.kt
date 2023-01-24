@@ -14,7 +14,7 @@ import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.domain.Track
 
 class SearchResultAdapter(
-    private var tracks: List<Track>,
+    private val tracks: List<Track>,
     private val openTrack: (Track) -> Unit,
     private val clearHistory: () -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -49,10 +49,15 @@ class SearchResultAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (isHistory) {
             when (getItemViewType(position)) {
-                R.layout.search_result_item -> (holder as SearchResultViewHolder.TrackListItemHolder).bind(
-                    tracks[position - 1]
-                )
                 R.layout.search_result_placeholder_history_title -> {}
+                R.layout.search_result_item -> {
+                    (holder as SearchResultViewHolder.TrackListItemHolder).bind(
+                        tracks[position - 1]
+                    )
+                    val trackItem: LinearLayout = holder.itemView.findViewById(R.id.search_result_item)
+                    trackItem.setOnClickListener { openTrack(tracks[position - 1]) }
+
+                }
                 R.layout.search_result_placeholder_history_clear_button -> {
                     val clearHistoryButton: MaterialButton = holder.itemView.findViewById(
                         R.id.search_result_placeholder_history_clear_button
@@ -64,14 +69,8 @@ class SearchResultAdapter(
             }
         } else {
             (holder as SearchResultViewHolder.TrackListItemHolder).bind(tracks[position])
-
-            val addToHistoryButton: LinearLayout = holder.itemView.findViewById(
-                R.id.search_result_item
-            )
-
-            addToHistoryButton.setOnClickListener {
-                openTrack(tracks[position])
-            }
+            val trackItem: LinearLayout = holder.itemView.findViewById(R.id.search_result_item)
+            trackItem.setOnClickListener { openTrack(tracks[position]) }
         }
     }
 
@@ -89,8 +88,8 @@ class SearchResultAdapter(
         }
     }
 
-    fun setSearchHistory(isOn: Boolean) {
-        isHistory = isOn
+    fun showSearchHistory(show: Boolean) {
+        isHistory = show
         notifyDataSetChanged()
     }
 }
@@ -109,7 +108,7 @@ sealed class SearchResultViewHolder(view: View) : RecyclerView.ViewHolder(view) 
             trackTime.text = track.trackTime
 
             Glide.with(itemView.context).load(track.artworkUrl100)
-                .placeholder(R.drawable.search_result_artwork_placeholder_icon).centerCrop()
+                .placeholder(R.drawable.ic_search_result_artwork_placeholder).centerCrop()
                 .transform(RoundedCorners(5)).into(artwork)
         }
     }

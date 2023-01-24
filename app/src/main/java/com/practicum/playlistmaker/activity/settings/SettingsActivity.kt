@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import com.practicum.playlistmaker.App
 import com.practicum.playlistmaker.R
-import com.practicum.playlistmaker.activity.main.MainActivity
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -37,8 +36,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setListeners() {
         backButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            onBackPressedDispatcher.onBackPressed()
         }
 
         themeSwitcher.setOnCheckedChangeListener() { switcher, checked ->

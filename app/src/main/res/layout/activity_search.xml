@@ -38,7 +38,7 @@
             android:paddingTop="10dp"
             android:paddingEnd="8dp"
             android:paddingBottom="10dp"
-            android:src="@drawable/search_form_search_icon"
+            android:src="@drawable/ic_search_form_search"
             tools:ignore="ContentDescription" />
 
         <EditText
@@ -67,7 +67,7 @@
             android:paddingTop="10dp"
             android:paddingEnd="12dp"
             android:paddingBottom="10dp"
-            android:src="@drawable/search_form_clear_icon"
+            android:src="@drawable/ic_search_form_clear"
             android:visibility="gone"
             tools:ignore="ContentDescription"/>
 
@@ -95,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/search_result_placeholder_error_icon"
+            android:src="@drawable/ic_search_result_placeholder_error"
             tools:ignore="ContentDescription"/>
 
         <TextView

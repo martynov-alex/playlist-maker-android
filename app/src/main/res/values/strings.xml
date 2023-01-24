@@ -36,6 +36,20 @@
     <string name="search_result_placeholder_history">Вы искали</string>
     <string name="search_result_placeholder_history_clear_button">Очистить историю</string>
 
+    <!-- Audio Player Screen -->
+    <string name="audio_player_track_time_start_position">00:00</string>
+    <string name="audio_player_track_name">Наименование трека</string>
+    <string name="audio_player_artist_name">Наименование исполнителя</string>
+    <string name="audio_player_track_time">Длительность</string>
+    <string name="audio_player_collection_name">Альбом</string>
+    <string name="audio_player_release_year">Год</string>
+    <string name="audio_player_genre">Жанр</string>
+    <string name="audio_player_country">Страна</string>
+    <string name="audio_player_no_data">Нет информации</string>
+    <string name="audio_player_play_action">Воспроизвести</string>
+    <string name="audio_player_add_action">Добавить</string>
+    <string name="audio_player_like_action">Нравится</string>
+
     <!-- Library Screen -->
     <string name="library_screen_title">Медиатека</string>
 
