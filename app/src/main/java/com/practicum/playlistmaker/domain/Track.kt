@@ -1,5 +1,6 @@
 package com.practicum.playlistmaker.domain
 
+import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,7 +41,6 @@ import java.util.*
     "isStreamable":true
 }*/
 
-
 data class Track(
     val trackId: Int,
     val trackName: String,
@@ -51,7 +51,8 @@ data class Track(
     val releaseDate: String?,
     val primaryGenreName: String?,
     val country: String?
-) {
+) : Serializable
+{
     val trackTime: String
         get() {
             return SimpleDateFormat("mm:ss", Locale.getDefault()).format(trackTimeMillis)

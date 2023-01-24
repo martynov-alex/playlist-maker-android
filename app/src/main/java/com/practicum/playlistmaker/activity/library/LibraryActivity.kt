@@ -1,14 +1,12 @@
 package com.practicum.playlistmaker.activity.library
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import com.practicum.playlistmaker.R
-import com.practicum.playlistmaker.activity.main.MainActivity
 
 class LibraryActivity : AppCompatActivity() {
-    private lateinit var backButton: ImageView
+    private lateinit var backButtonView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,13 +17,12 @@ class LibraryActivity : AppCompatActivity() {
     }
 
     private fun initVariables() {
-        backButton = findViewById(R.id.back_button)
+        backButtonView = findViewById(R.id.back_button)
     }
 
     private fun initListeners() {
-        backButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        backButtonView.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 

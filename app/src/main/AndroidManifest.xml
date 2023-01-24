@@ -48,7 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.audioplayer.AudioPlayerActivity"
+            android:name=".activity.audio_player.AudioPlayerActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

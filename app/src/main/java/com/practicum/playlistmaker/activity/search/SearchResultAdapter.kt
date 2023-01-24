@@ -54,6 +54,9 @@ class SearchResultAdapter(
                     (holder as SearchResultViewHolder.TrackListItemHolder).bind(
                         tracks[position - 1]
                     )
+                    val trackItem: LinearLayout = holder.itemView.findViewById(R.id.search_result_item)
+                    trackItem.setOnClickListener { openTrack(tracks[position - 1]) }
+
                 }
                 R.layout.search_result_placeholder_history_clear_button -> {
                     val clearHistoryButton: MaterialButton = holder.itemView.findViewById(
@@ -66,12 +69,8 @@ class SearchResultAdapter(
             }
         } else {
             (holder as SearchResultViewHolder.TrackListItemHolder).bind(tracks[position])
-
             val trackItem: LinearLayout = holder.itemView.findViewById(R.id.search_result_item)
-
-            trackItem.setOnClickListener {
-                if(!isHistory) openTrack(tracks[position])
-            }
+            trackItem.setOnClickListener { openTrack(tracks[position]) }
         }
     }
 

@@ -38,9 +38,11 @@
     <dimen name="search_result_placeholder_text_margin_start_end">24dp</dimen>
     <dimen name="search_result_placeholder_button_margin_top">24dp</dimen>
 
-
     <dimen name="search_result_item_primary_text_size">16sp</dimen>
     <dimen name="search_result_item_secondary_text_size">11sp</dimen>
     <dimen name="search_result_placeholder_text_size">19sp</dimen>
+
+    <!-- Audio Player screen. -->
+    <dimen name="audio_player_small_buttons_size">51dp</dimen>
 
 </resources>

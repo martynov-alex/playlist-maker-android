@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.practicum.playlistmaker.R
+import com.practicum.playlistmaker.activity.audio_player.AudioPlayerActivity
 import com.practicum.playlistmaker.activity.main.MainActivity
 import com.practicum.playlistmaker.common.hideKeyboard
 import com.practicum.playlistmaker.domain.Track
@@ -92,6 +93,12 @@ class SearchActivity : AppCompatActivity() {
         super.onPause()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(SEARCH_REQUEST, searchRequest)
+        Log.d("Search activity", "Save $searchRequest")
+    }
+
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
@@ -100,12 +107,6 @@ class SearchActivity : AppCompatActivity() {
         Log.d("Search activity", "Restore $searchRequest")
 
         searchInputField.setText(searchRequest)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(SEARCH_REQUEST, searchRequest)
-        Log.d("Search activity", "Save $searchRequest")
     }
 
     private fun clearButtonVisibility(s: CharSequence?): Int {
@@ -238,11 +239,8 @@ class SearchActivity : AppCompatActivity() {
 
     private fun openTrack(track: Track) {
         searchHistory.addTrack(track)
-        //val intent = Intent(this, AuActivity::class.java)
-        Toast.makeText(
-            this, "Трек ${track.trackName} добавлен", Toast.LENGTH_SHORT
-        ).show()
-
+        val intent = AudioPlayerActivity.getIntent(this, track)
+        startActivity(intent)
     }
 
     private fun clearHistory() {
@@ -250,8 +248,6 @@ class SearchActivity : AppCompatActivity() {
         tracks.clear()
         searchResultRvAdapter.showSearchHistory(false)
         showResult(SearchScreenState.TRACKS)
-
-        Toast.makeText(this, "История поиска очищена", Toast.LENGTH_SHORT).show()
     }
 }
 
